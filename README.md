@@ -10,6 +10,18 @@ The best way to test for direct object references would be by having at least tw
 
 Below are several typical scenarios for this vulnerability and the methods to test for each:
 
+## Steps involved in execution of IDOR attack: 
+Burp Suite Tool is widely used by attackers to execute such type of Attacks. Following are the steps being followed:  
+
+#### Capture the Request: 
+First of all, an attacker will decide a target website to which he wants to execute an IDOR attack. Then the website is added to the scope and spider the website to get all the URLs with specific parameters in it.
+#### Filter the parameters Request: 
+After the first step, we will filter our captured request with the parameter filters. An attacker will only choose that parameter or Injection points where they can execute the attacks.
+#### Forward request to Repeater: 
+Now, if an attacker will find some of the injection point where they can execute IDOR, they will forward the request to the repeater. The vulnerable URL might look something like this: www.xyz.com/myaccount/uid=19. Here the “UID” seems to be vulnerable.
+#### Tampering of Parameters: 
+Now as the attacker has the vulnerable injection point, they will now try to execute the IDOR attack with the help of Social engineering or the pattern as written in injection point. Example: an attacker may change uid from 19 to 20 which will open account of another user who has been assigned id number 20.
+
 ## The Value of a Parameter Is Used Directly to Retrieve a Database Record
 #### Sample request:
 ````
@@ -37,7 +49,7 @@ http://foo.bar/showImage?img=img00011
 
 In this case, the value of the `file` parameter is used to tell the application what file the user intends to retrieve. By providing the name or identifier of a different file (for example file=image00012.jpg) the attacker will be able to retrieve objects belonging to other users.
 
-To test for this case, the tester should obtain a reference the user is not supposed to be able to access and attempt to access it by using it as the value of `file` parameter. Note: This vulnerability is often exploited in conjunction with a directory/path traversal vulnerability (see [Testing for Path Traversal](01-Testing_Directory_Traversal_File_Include.md))
+To test for this case, the tester should obtain a reference the user is not supposed to be able to access and attempt to access it by using it as the value of `file` parameter. Note: This vulnerability is often exploited in conjunction with a directory/path traversal vulnerability 
 
 ### The Value of a Parameter Is Used Directly to Access Application Functionality
 
@@ -56,3 +68,4 @@ In the above examples the modification of a single parameter is sufficient. Howe
 - [Top 10 2013-A4-Insecure Direct Object References](https://wiki.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References)
 
 - [OWASP Release Notes](https://owasp.org/www-project-top-ten/2017/Release_Notes)
+- - [portswigger](https://portswigger.net/web-security/access-control/idor)
