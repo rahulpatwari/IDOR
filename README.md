@@ -68,4 +68,4 @@ In the above examples the modification of a single parameter is sufficient. Howe
 - [Top 10 2013-A4-Insecure Direct Object References](https://wiki.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References)
 
 - [OWASP Release Notes](https://owasp.org/www-project-top-ten/2017/Release_Notes)
-- - [portswigger](https://portswigger.net/web-security/access-control/idor)
+- [portswigger](https://portswigger.net/web-security/access-control/idor)
